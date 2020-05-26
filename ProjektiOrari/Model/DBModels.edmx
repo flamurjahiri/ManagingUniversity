@@ -1,0 +1,679 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OrariDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="message" Type="varbinary(max)" Nullable="false" />
+          <Property Name="type" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chatUsers">
+          <Key>
+            <PropertyRef Name="cu_id" />
+          </Key>
+          <Property Name="cu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="chat_id" Type="int" Nullable="false" />
+          <Property Name="user_id_from" Type="int" Nullable="false" />
+          <Property Name="user_id_to" Type="int" Nullable="false" />
+          <Property Name="ip_user" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="feedback">
+          <Key>
+            <PropertyRef Name="idFeedback" />
+          </Key>
+          <Property Name="idFeedback" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Studenti" Type="int" />
+          <Property Name="Lenda" Type="int" />
+          <Property Name="Mesazhi" Type="text" Nullable="false" />
+          <Property Name="MesazhiRreth" Type="char" MaxLength="1" />
+          <Property Name="Data e feedback" Type="date" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="KerkesaPerNderrim">
+          <Key>
+            <PropertyRef Name="idKerkesa" />
+          </Key>
+          <Property Name="idKerkesa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lenda" Type="int" />
+          <Property Name="OraFillimit" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OraMbarimit" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Dita" Type="varchar" MaxLength="2" />
+          <Property Name="approved" Type="bit" />
+        </EntityType>
+        <EntityType Name="Lenda">
+          <Key>
+            <PropertyRef Name="IDLenda" />
+          </Key>
+          <Property Name="IDLenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emri i lendes" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Lloji" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Orë" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LendetEZgjedhura">
+          <Key>
+            <PropertyRef Name="Studenti" />
+            <PropertyRef Name="idLigjeruesi" />
+          </Key>
+          <Property Name="idLendaZgjedhur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Studenti" Type="int" Nullable="false" />
+          <Property Name="idLigjeruesi" Type="int" Nullable="false" />
+          <Property Name="Semestri" Type="int" Nullable="false" />
+          <Property Name="Data e zgjedhjes" Type="date" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Ligjeruesit">
+          <Key>
+            <PropertyRef Name="IDProfesori" />
+            <PropertyRef Name="IDLenda" />
+          </Key>
+          <Property Name="IDLigjeruesi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDProfesori" Type="int" Nullable="false" />
+          <Property Name="IDLenda" Type="int" Nullable="false" />
+          <Property Name="Lloji" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orari">
+          <Key>
+            <PropertyRef Name="IDOrari" />
+          </Key>
+          <Property Name="IDOrari" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDLigjeruesi" Type="int" />
+          <Property Name="Emri/Numri i salles" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Dita" Type="varchar" MaxLength="2" />
+          <Property Name="OraFillimit" Type="time" Precision="7" Nullable="false" />
+          <Property Name="OraMbarimit" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Semestri" Type="int" Nullable="false" />
+          <Property Name="Drejtimi" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="Prioriteti" />
+          </Key>
+          <Property Name="Prioriteti" Type="int" Nullable="false" />
+          <Property Name="Emri" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IDuseri" />
+          </Key>
+          <Property Name="IDuseri" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emri" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mbiemri" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Gjinia" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Shteti" Type="varchar" MaxLength="20" />
+          <Property Name="Qyteti" Type="varchar" MaxLength="30" />
+          <Property Name="Username" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Data e lindjes" Type="date" />
+          <Property Name="Mosha" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="Statusi" Type="int" />
+          <Property Name="E-Mail" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__chatUsers__chat___4AB81AF0">
+          <End Role="chat" Type="Self.chat" Multiplicity="1" />
+          <End Role="chatUsers" Type="Self.chatUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chat">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="chatUsers">
+              <PropertyRef Name="chat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chatUsers__user___4BAC3F29">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="chatUsers" Type="Self.chatUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDuseri" />
+            </Principal>
+            <Dependent Role="chatUsers">
+              <PropertyRef Name="user_id_from" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chatUsers__user___4CA06362">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="chatUsers" Type="Self.chatUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDuseri" />
+            </Principal>
+            <Dependent Role="chatUsers">
+              <PropertyRef Name="user_id_to" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__feedback__Lenda__440B1D61' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__feedback__Lenda__440B1D61" />-->
+        <Association Name="FK__feedback__Studen__4316F928">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDuseri" />
+            </Principal>
+            <Dependent Role="feedback">
+              <PropertyRef Name="Studenti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__KerkesaPe__Lenda__3E52440B' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__KerkesaPe__Lenda__3E52440B" />-->
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__LendetEZg__idLig__3A81B327' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__LendetEZg__idLig__3A81B327" />-->
+        <Association Name="FK__LendetEZg__Stude__398D8EEE">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="LendetEZgjedhura" Type="Self.LendetEZgjedhura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDuseri" />
+            </Principal>
+            <Dependent Role="LendetEZgjedhura">
+              <PropertyRef Name="Studenti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ligjerues__IDLen__2F10007B">
+          <End Role="Lenda" Type="Self.Lenda" Multiplicity="1" />
+          <End Role="Ligjeruesit" Type="Self.Ligjeruesit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lenda">
+              <PropertyRef Name="IDLenda" />
+            </Principal>
+            <Dependent Role="Ligjeruesit">
+              <PropertyRef Name="IDLenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ligjerues__IDPro__2E1BDC42">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Ligjeruesit" Type="Self.Ligjeruesit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDuseri" />
+            </Principal>
+            <Dependent Role="Ligjeruesit">
+              <PropertyRef Name="IDProfesori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Orari__IDLigjeru__33D4B598' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Orari__IDLigjeru__33D4B598" />-->
+        <Association Name="FK__Users__Statusi__276EDEB3">
+          <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroup">
+              <PropertyRef Name="Prioriteti" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Statusi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrariDBModelStoreContainer">
+          <EntitySet Name="chat" EntityType="Self.chat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chatUsers" EntityType="Self.chatUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="feedback" EntityType="Self.feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KerkesaPerNderrim" EntityType="Self.KerkesaPerNderrim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lenda" EntityType="Self.Lenda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LendetEZgjedhura" EntityType="Self.LendetEZgjedhura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ligjeruesit" EntityType="Self.Ligjeruesit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orari" EntityType="Self.Orari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGroup" EntityType="Self.UserGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__chatUsers__chat___4AB81AF0" Association="Self.FK__chatUsers__chat___4AB81AF0">
+            <End Role="chat" EntitySet="chat" />
+            <End Role="chatUsers" EntitySet="chatUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chatUsers__user___4BAC3F29" Association="Self.FK__chatUsers__user___4BAC3F29">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="chatUsers" EntitySet="chatUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chatUsers__user___4CA06362" Association="Self.FK__chatUsers__user___4CA06362">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="chatUsers" EntitySet="chatUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__feedback__Studen__4316F928" Association="Self.FK__feedback__Studen__4316F928">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="feedback" EntitySet="feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LendetEZg__Stude__398D8EEE" Association="Self.FK__LendetEZg__Stude__398D8EEE">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="LendetEZgjedhura" EntitySet="LendetEZgjedhura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ligjerues__IDLen__2F10007B" Association="Self.FK__Ligjerues__IDLen__2F10007B">
+            <End Role="Lenda" EntitySet="Lenda" />
+            <End Role="Ligjeruesit" EntitySet="Ligjeruesit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ligjerues__IDPro__2E1BDC42" Association="Self.FK__Ligjerues__IDPro__2E1BDC42">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Ligjeruesit" EntitySet="Ligjeruesit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__Statusi__276EDEB3" Association="Self.FK__Users__Statusi__276EDEB3">
+            <End Role="UserGroup" EntitySet="UserGroup" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrariDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="message" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="chatUsers" Relationship="Self.FK__chatUsers__chat___4AB81AF0" FromRole="chat" ToRole="chatUsers" />
+        </EntityType>
+        <EntityType Name="chatUser">
+          <Key>
+            <PropertyRef Name="cu_id" />
+          </Key>
+          <Property Name="cu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="chat_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id_from" Type="Int32" Nullable="false" />
+          <Property Name="user_id_to" Type="Int32" Nullable="false" />
+          <Property Name="ip_user" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="chat" Relationship="Self.FK__chatUsers__chat___4AB81AF0" FromRole="chatUsers" ToRole="chat" />
+          <NavigationProperty Name="User" Relationship="Self.FK__chatUsers__user___4BAC3F29" FromRole="chatUsers" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK__chatUsers__user___4CA06362" FromRole="chatUsers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="feedback">
+          <Key>
+            <PropertyRef Name="idFeedback" />
+          </Key>
+          <Property Name="idFeedback" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Studenti" Type="Int32" />
+          <Property Name="Lenda" Type="Int32" />
+          <Property Name="Mesazhi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MesazhiRreth" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Data_e_feedback" Type="DateTime" annotation:StoreGeneratedPattern="Computed" Precision="0" />
+          <NavigationProperty Name="User" Relationship="Self.FK__feedback__Studen__4316F928" FromRole="feedback" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="KerkesaPerNderrim">
+          <Key>
+            <PropertyRef Name="idKerkesa" />
+          </Key>
+          <Property Name="idKerkesa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lenda" Type="Int32" />
+          <Property Name="OraFillimit" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OraMbarimit" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Dita" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="approved" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Lenda">
+          <Key>
+            <PropertyRef Name="IDLenda" />
+          </Key>
+          <Property Name="IDLenda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emri_i_lendes" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lloji" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Orë" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ligjeruesits" Relationship="Self.FK__Ligjerues__IDLen__2F10007B" FromRole="Lenda" ToRole="Ligjeruesit" />
+        </EntityType>
+        <EntityType Name="LendetEZgjedhura">
+          <Key>
+            <PropertyRef Name="Studenti" />
+            <PropertyRef Name="idLigjeruesi" />
+          </Key>
+          <Property Name="idLendaZgjedhur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Studenti" Type="Int32" Nullable="false" />
+          <Property Name="idLigjeruesi" Type="Int32" Nullable="false" />
+          <Property Name="Semestri" Type="Int32" Nullable="false" />
+          <Property Name="Data_e_zgjedhjes" Type="DateTime" annotation:StoreGeneratedPattern="Computed" Precision="0" />
+          <NavigationProperty Name="User" Relationship="Self.FK__LendetEZg__Stude__398D8EEE" FromRole="LendetEZgjedhura" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Ligjeruesit">
+          <Key>
+            <PropertyRef Name="IDProfesori" />
+            <PropertyRef Name="IDLenda" />
+          </Key>
+          <Property Name="IDLigjeruesi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDProfesori" Type="Int32" Nullable="false" />
+          <Property Name="IDLenda" Type="Int32" Nullable="false" />
+          <Property Name="Lloji" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Lenda" Relationship="Self.FK__Ligjerues__IDLen__2F10007B" FromRole="Ligjeruesit" ToRole="Lenda" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Ligjerues__IDPro__2E1BDC42" FromRole="Ligjeruesit" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Orari">
+          <Key>
+            <PropertyRef Name="IDOrari" />
+          </Key>
+          <Property Name="IDOrari" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDLigjeruesi" Type="Int32" />
+          <Property Name="Emri_Numri_i_salles" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dita" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="OraFillimit" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="OraMbarimit" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Semestri" Type="Int32" Nullable="false" />
+          <Property Name="Drejtimi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="Prioriteti" />
+          </Key>
+          <Property Name="Prioriteti" Type="Int32" Nullable="false" />
+          <Property Name="Emri" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__Statusi__276EDEB3" FromRole="UserGroup" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IDuseri" />
+          </Key>
+          <Property Name="IDuseri" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emri" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mbiemri" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gjinia" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Shteti" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Qyteti" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data_e_lindjes" Type="DateTime" Precision="0" />
+          <Property Name="Mosha" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Statusi" Type="Int32" />
+          <Property Name="E_Mail" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="chatUsers" Relationship="Self.FK__chatUsers__user___4BAC3F29" FromRole="Users" ToRole="chatUsers" />
+          <NavigationProperty Name="chatUsers1" Relationship="Self.FK__chatUsers__user___4CA06362" FromRole="Users" ToRole="chatUsers" />
+          <NavigationProperty Name="feedbacks" Relationship="Self.FK__feedback__Studen__4316F928" FromRole="Users" ToRole="feedback" />
+          <NavigationProperty Name="LendetEZgjedhuras" Relationship="Self.FK__LendetEZg__Stude__398D8EEE" FromRole="Users" ToRole="LendetEZgjedhura" />
+          <NavigationProperty Name="Ligjeruesits" Relationship="Self.FK__Ligjerues__IDPro__2E1BDC42" FromRole="Users" ToRole="Ligjeruesit" />
+          <NavigationProperty Name="UserGroup" Relationship="Self.FK__Users__Statusi__276EDEB3" FromRole="Users" ToRole="UserGroup" />
+        </EntityType>
+        <Association Name="FK__chatUsers__chat___4AB81AF0">
+          <End Role="chat" Type="Self.chat" Multiplicity="1" />
+          <End Role="chatUsers" Type="Self.chatUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chat">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="chatUsers">
+              <PropertyRef Name="chat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chatUsers__user___4BAC3F29">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="chatUsers" Type="Self.chatUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDuseri" />
+            </Principal>
+            <Dependent Role="chatUsers">
+              <PropertyRef Name="user_id_from" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chatUsers__user___4CA06362">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="chatUsers" Type="Self.chatUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDuseri" />
+            </Principal>
+            <Dependent Role="chatUsers">
+              <PropertyRef Name="user_id_to" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__feedback__Studen__4316F928">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDuseri" />
+            </Principal>
+            <Dependent Role="feedback">
+              <PropertyRef Name="Studenti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ligjerues__IDLen__2F10007B">
+          <End Role="Lenda" Type="Self.Lenda" Multiplicity="1" />
+          <End Role="Ligjeruesit" Type="Self.Ligjeruesit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lenda">
+              <PropertyRef Name="IDLenda" />
+            </Principal>
+            <Dependent Role="Ligjeruesit">
+              <PropertyRef Name="IDLenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LendetEZg__Stude__398D8EEE">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="LendetEZgjedhura" Type="Self.LendetEZgjedhura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDuseri" />
+            </Principal>
+            <Dependent Role="LendetEZgjedhura">
+              <PropertyRef Name="Studenti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ligjerues__IDPro__2E1BDC42">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Ligjeruesit" Type="Self.Ligjeruesit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDuseri" />
+            </Principal>
+            <Dependent Role="Ligjeruesit">
+              <PropertyRef Name="IDProfesori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__Statusi__276EDEB3">
+          <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroup">
+              <PropertyRef Name="Prioriteti" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Statusi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="chats" EntityType="Self.chat" />
+          <EntitySet Name="chatUsers" EntityType="Self.chatUser" />
+          <EntitySet Name="feedbacks" EntityType="Self.feedback" />
+          <EntitySet Name="KerkesaPerNderrims" EntityType="Self.KerkesaPerNderrim" />
+          <EntitySet Name="Lendas" EntityType="Self.Lenda" />
+          <EntitySet Name="LendetEZgjedhuras" EntityType="Self.LendetEZgjedhura" />
+          <EntitySet Name="Ligjeruesits" EntityType="Self.Ligjeruesit" />
+          <EntitySet Name="Oraris" EntityType="Self.Orari" />
+          <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__chatUsers__chat___4AB81AF0" Association="Self.FK__chatUsers__chat___4AB81AF0">
+            <End Role="chat" EntitySet="chats" />
+            <End Role="chatUsers" EntitySet="chatUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chatUsers__user___4BAC3F29" Association="Self.FK__chatUsers__user___4BAC3F29">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="chatUsers" EntitySet="chatUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chatUsers__user___4CA06362" Association="Self.FK__chatUsers__user___4CA06362">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="chatUsers" EntitySet="chatUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__feedback__Studen__4316F928" Association="Self.FK__feedback__Studen__4316F928">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="feedback" EntitySet="feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ligjerues__IDLen__2F10007B" Association="Self.FK__Ligjerues__IDLen__2F10007B">
+            <End Role="Lenda" EntitySet="Lendas" />
+            <End Role="Ligjeruesit" EntitySet="Ligjeruesits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LendetEZg__Stude__398D8EEE" Association="Self.FK__LendetEZg__Stude__398D8EEE">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="LendetEZgjedhura" EntitySet="LendetEZgjedhuras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ligjerues__IDPro__2E1BDC42" Association="Self.FK__Ligjerues__IDPro__2E1BDC42">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Ligjeruesit" EntitySet="Ligjeruesits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__Statusi__276EDEB3" Association="Self.FK__Users__Statusi__276EDEB3">
+            <End Role="UserGroup" EntitySet="UserGroups" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrariDBModelStoreContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="chats">
+            <EntityTypeMapping TypeName="OrariDBModel.chat">
+              <MappingFragment StoreEntitySet="chat">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chatUsers">
+            <EntityTypeMapping TypeName="OrariDBModel.chatUser">
+              <MappingFragment StoreEntitySet="chatUsers">
+                <ScalarProperty Name="cu_id" ColumnName="cu_id" />
+                <ScalarProperty Name="chat_id" ColumnName="chat_id" />
+                <ScalarProperty Name="user_id_from" ColumnName="user_id_from" />
+                <ScalarProperty Name="user_id_to" ColumnName="user_id_to" />
+                <ScalarProperty Name="ip_user" ColumnName="ip_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feedbacks">
+            <EntityTypeMapping TypeName="OrariDBModel.feedback">
+              <MappingFragment StoreEntitySet="feedback">
+                <ScalarProperty Name="idFeedback" ColumnName="idFeedback" />
+                <ScalarProperty Name="Studenti" ColumnName="Studenti" />
+                <ScalarProperty Name="Lenda" ColumnName="Lenda" />
+                <ScalarProperty Name="Mesazhi" ColumnName="Mesazhi" />
+                <ScalarProperty Name="MesazhiRreth" ColumnName="MesazhiRreth" />
+                <ScalarProperty Name="Data_e_feedback" ColumnName="Data e feedback" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KerkesaPerNderrims">
+            <EntityTypeMapping TypeName="OrariDBModel.KerkesaPerNderrim">
+              <MappingFragment StoreEntitySet="KerkesaPerNderrim">
+                <ScalarProperty Name="idKerkesa" ColumnName="idKerkesa" />
+                <ScalarProperty Name="Lenda" ColumnName="Lenda" />
+                <ScalarProperty Name="OraFillimit" ColumnName="OraFillimit" />
+                <ScalarProperty Name="OraMbarimit" ColumnName="OraMbarimit" />
+                <ScalarProperty Name="Dita" ColumnName="Dita" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lendas">
+            <EntityTypeMapping TypeName="OrariDBModel.Lenda">
+              <MappingFragment StoreEntitySet="Lenda">
+                <ScalarProperty Name="IDLenda" ColumnName="IDLenda" />
+                <ScalarProperty Name="Emri_i_lendes" ColumnName="Emri i lendes" />
+                <ScalarProperty Name="Lloji" ColumnName="Lloji" />
+                <ScalarProperty Name="Orë" ColumnName="Orë" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LendetEZgjedhuras">
+            <EntityTypeMapping TypeName="OrariDBModel.LendetEZgjedhura">
+              <MappingFragment StoreEntitySet="LendetEZgjedhura">
+                <ScalarProperty Name="idLendaZgjedhur" ColumnName="idLendaZgjedhur" />
+                <ScalarProperty Name="Studenti" ColumnName="Studenti" />
+                <ScalarProperty Name="idLigjeruesi" ColumnName="idLigjeruesi" />
+                <ScalarProperty Name="Semestri" ColumnName="Semestri" />
+                <ScalarProperty Name="Data_e_zgjedhjes" ColumnName="Data e zgjedhjes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ligjeruesits">
+            <EntityTypeMapping TypeName="OrariDBModel.Ligjeruesit">
+              <MappingFragment StoreEntitySet="Ligjeruesit">
+                <ScalarProperty Name="IDLigjeruesi" ColumnName="IDLigjeruesi" />
+                <ScalarProperty Name="IDProfesori" ColumnName="IDProfesori" />
+                <ScalarProperty Name="IDLenda" ColumnName="IDLenda" />
+                <ScalarProperty Name="Lloji" ColumnName="Lloji" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oraris">
+            <EntityTypeMapping TypeName="OrariDBModel.Orari">
+              <MappingFragment StoreEntitySet="Orari">
+                <ScalarProperty Name="IDOrari" ColumnName="IDOrari" />
+                <ScalarProperty Name="IDLigjeruesi" ColumnName="IDLigjeruesi" />
+                <ScalarProperty Name="Emri_Numri_i_salles" ColumnName="Emri/Numri i salles" />
+                <ScalarProperty Name="Dita" ColumnName="Dita" />
+                <ScalarProperty Name="OraFillimit" ColumnName="OraFillimit" />
+                <ScalarProperty Name="OraMbarimit" ColumnName="OraMbarimit" />
+                <ScalarProperty Name="Semestri" ColumnName="Semestri" />
+                <ScalarProperty Name="Drejtimi" ColumnName="Drejtimi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroups">
+            <EntityTypeMapping TypeName="OrariDBModel.UserGroup">
+              <MappingFragment StoreEntitySet="UserGroup">
+                <ScalarProperty Name="Prioriteti" ColumnName="Prioriteti" />
+                <ScalarProperty Name="Emri" ColumnName="Emri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="OrariDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IDuseri" ColumnName="IDuseri" />
+                <ScalarProperty Name="Emri" ColumnName="Emri" />
+                <ScalarProperty Name="Mbiemri" ColumnName="Mbiemri" />
+                <ScalarProperty Name="Gjinia" ColumnName="Gjinia" />
+                <ScalarProperty Name="Shteti" ColumnName="Shteti" />
+                <ScalarProperty Name="Qyteti" ColumnName="Qyteti" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Data_e_lindjes" ColumnName="Data e lindjes" />
+                <ScalarProperty Name="Mosha" ColumnName="Mosha" />
+                <ScalarProperty Name="Statusi" ColumnName="Statusi" />
+                <ScalarProperty Name="E_Mail" ColumnName="E-Mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14C1FA90-5A34-4263-8628-D51E427F456A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ProjektiOrari</RootNamespace>
+    <AssemblyName>ProjektiOrari</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu.Core, Version=1.11.5.2, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9" />
+    <Reference Include="Bunifu.UI.WinForms.BunifuButton">
+      <HintPath>..\..\..\..\Downloads\[FTUApps.com] - Bunifu UI WinForms v1.11.5.21 + Dataviz Advanced v1.1.1.5 + Activator\Bunifu UI WinForms 1.11.5.21\Bunifu.UI.WinForms.BunifuButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuCircleProgress">
+      <HintPath>..\..\..\..\Downloads\[FTUApps.com] - Bunifu UI WinForms v1.11.5.21 + Dataviz Advanced v1.1.1.5 + Activator\Bunifu UI WinForms 1.11.5.21\Bunifu.UI.WinForms.BunifuCircleProgress.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDataGridView">
+      <HintPath>..\..\..\..\Downloads\[FTUApps.com] - Bunifu UI WinForms v1.11.5.21 + Dataviz Advanced v1.1.1.5 + Activator\Bunifu UI WinForms 1.11.5.21\Bunifu.UI.WinForms.BunifuDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDatePicker">
+      <HintPath>..\..\..\..\Downloads\[FTUApps.com] - Bunifu UI WinForms v1.11.5.21 + Dataviz Advanced v1.1.1.5 + Activator\Bunifu UI WinForms 1.11.5.21\Bunifu.UI.WinForms.BunifuDatePicker.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDropdown">
+      <HintPath>..\..\..\..\Downloads\[FTUApps.com] - Bunifu UI WinForms v1.11.5.21 + Dataviz Advanced v1.1.1.5 + Activator\Bunifu UI WinForms 1.11.5.21\Bunifu.UI.WinForms.BunifuDropdown.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuLabel">
+      <HintPath>..\..\..\..\Downloads\[FTUApps.com] - Bunifu UI WinForms v1.11.5.21 + Dataviz Advanced v1.1.1.5 + Activator\Bunifu UI WinForms 1.11.5.21\Bunifu.UI.WinForms.BunifuLabel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuSlider">
+      <HintPath>..\..\..\..\Downloads\[FTUApps.com] - Bunifu UI WinForms v1.11.5.21 + Dataviz Advanced v1.1.1.5 + Activator\Bunifu UI WinForms 1.11.5.21\Bunifu.UI.WinForms.BunifuSlider.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\AllChanges.cs" />
+    <Compile Include="Controller\LoginMapper.cs" />
+    <Compile Include="Controller\OrariMapper.cs" />
+    <Compile Include="Controller\UserMapper.cs" />
+    <Compile Include="Model\chat.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\chatUser.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\feedback.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\KerkesaPerNderrim.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Lenda.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LendetEZgjedhura.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Ligjeruesit.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Orari.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserGroup.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AddFeedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddFeedback.Designer.cs">
+      <DependentUpon>AddFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaktoLendet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CaktoLendet.Designer.cs">
+      <DependentUpon>CaktoLendet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CnfNO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CnfNO.Designer.cs">
+      <DependentUpon>CnfNO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\fshijLendet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\fshijLendet.Designer.cs">
+      <DependentUpon>fshijLendet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LargoStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LargoStudent.Designer.cs">
+      <DependentUpon>LargoStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NderrimiOrarit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NderrimiOrarit.Designer.cs">
+      <DependentUpon>NderrimiOrarit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NdryshoTeDhenat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NdryshoTeDhenat.Designer.cs">
+      <DependentUpon>NdryshoTeDhenat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrariPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\OrariPanel.Designer.cs">
+      <DependentUpon>OrariPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProfPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProfPanel.Designer.cs">
+      <DependentUpon>ProfPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RektorPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RektorPanel.Designer.cs">
+      <DependentUpon>RektorPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShikoFeedBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ShikoFeedBack.Designer.cs">
+      <DependentUpon>ShikoFeedBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShikoNderrimet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ShikoNderrimet.Designer.cs">
+      <DependentUpon>ShikoNderrimet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShtimiLendeve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ShtimiLendeve.Designer.cs">
+      <DependentUpon>ShtimiLendeve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShtoStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ShtoStudent.Designer.cs">
+      <DependentUpon>ShtoStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\StudentPanel.Designer.cs">
+      <DependentUpon>StudentPanel.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\AddFeedback.resx">
+      <DependentUpon>AddFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CaktoLendet.resx">
+      <DependentUpon>CaktoLendet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CnfNO.resx">
+      <DependentUpon>CnfNO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\fshijLendet.resx">
+      <DependentUpon>fshijLendet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LargoStudent.resx">
+      <DependentUpon>LargoStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NderrimiOrarit.resx">
+      <DependentUpon>NderrimiOrarit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NdryshoTeDhenat.resx">
+      <DependentUpon>NdryshoTeDhenat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\OrariPanel.resx">
+      <DependentUpon>OrariPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProfPanel.resx">
+      <DependentUpon>ProfPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RektorPanel.resx">
+      <DependentUpon>RektorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ShikoFeedBack.resx">
+      <DependentUpon>ShikoFeedBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ShikoNderrimet.resx">
+      <DependentUpon>ShikoNderrimet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ShtimiLendeve.resx">
+      <DependentUpon>ShtimiLendeve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ShtoStudent.resx">
+      <DependentUpon>ShtoStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\StudentPanel.resx">
+      <DependentUpon>StudentPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\DBModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\DBModels.edmx.diagram">
+      <DependentUpon>DBModels.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\DBModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBModels.Context.cs</LastGenOutput>
+      <DependentUpon>DBModels.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\DBModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBModels.edmx</DependentUpon>
+      <LastGenOutput>DBModels.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChatClient\ChatClient.csproj">
+      <Project>{07a5e133-d387-49c5-b50a-ae2109db8758}</Project>
+      <Name>ChatClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChatInterface\ChatInterface.csproj">
+      <Project>{1c3a5b14-d28c-421d-a35f-7ed0e4a911d1}</Project>
+      <Name>ChatInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChatServer\ChatServer.csproj">
+      <Project>{bb3cc95d-061f-4561-8add-6cbc73d5630a}</Project>
+      <Name>ChatServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
